@@ -41,3 +41,49 @@ TicketHub transformira podatke iz DummyJSON servisa u strukturirane tickete orga
 ### Korištenje AI alata
 
 Tijekom razvoja koristio sam ChatGPT za početnu strukturu projekta, pydantic transformaciju i async/await pozive. 
+
+### Upute za korištenje TicketHub API
+
+### 1. Postavljanje okruženja
+
+Kloniraj repozitorij:
+
+```bash
+git clone https://github.com/petarmajic/abysalto_ai_academy_task
+cd tickethub
+```
+
+Kreiraj virtualno okruženje:
+
+```bash
+python -m venv venv
+```
+
+Aktiviraj virtualno okruženje:
+
+**Linux/Mac:**
+```bash
+source venv/bin/activate
+```
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+Instaliraj dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Pokretanje servisa
+
+Pokreni development server:
+
+```bash
+uvicorn src.tickethub.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Server će biti dostupan na:  http://localhost:8000
+
