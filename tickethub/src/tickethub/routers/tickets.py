@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Query
-from ..services.external_api import get_all_tickets
+from fastapi import APIRouter, Query, HTTPException
+from ..services.external_api import get_all_tickets, get_ticket_by_id
 
 router = APIRouter(prefix="/tickets", tags=["tickets"])
 
@@ -29,3 +29,14 @@ async def get_tickets(page: int = Query(1), limit: int = Query(10)):
         "page": page,
         "limit": limit
     }
+
+
+@router.get("/{ticket_id}")
+async def get_ticket_detail(ticket_id: int):
+    """Detalji ticketa po ID-u"""
+    ticket = await get_ticket_by_id(ticket_id)
+    
+    if ticket is None:
+        raise HTTPException(status_code=404, detail="Ticket not found")
+    
+    return ticket
